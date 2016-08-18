@@ -1,0 +1,14 @@
+{
+  "name": "url-content",
+  "version": "0.0.1",
+  "description": "Get content informations by passing an url.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Clement Osternaud <osternaud.clement@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "html-metadatas": "^1.5.0",
+    "q": "^1.4.1",
+    "request": "^2.74.0"
+  }
+}
