@@ -1,7 +1,7 @@
 'use strict';
-import metadatas from 'html-metadatas';
-import request from 'request';
-import Q from 'q';
+var metadatas = require('html-metadatas');
+var request = require('request');
+var Q = require('q');
 
 module.exports = {
   /**
