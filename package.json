@@ -7,7 +7,7 @@
   "author": "Clement Osternaud <osternaud.clement@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "html-metadatas": "^1.5.0",
+    "html-metadata": "git://github.com/wikimedia/html-metadata.git",
     "q": "^1.4.1",
     "request": "^2.74.0"
   }

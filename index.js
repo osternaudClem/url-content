@@ -1,5 +1,5 @@
 'use strict';
-var metadatas = require('html-metadatas');
+var metadatas = require('html-metadata');
 var request = require('request');
 var Q = require('q');
 
