@@ -1,6 +1,6 @@
 {
   "name": "url-content",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Get content informations by passing an url.",
   "main": "index.js",
   "keywords": [],

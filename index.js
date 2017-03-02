@@ -11,9 +11,18 @@ module.exports = {
    */
   getMetadatas: function(url) {
     let deferred = Q.defer();
-    metadatas(url).then(function(metadata){
-      deferred.resolve(metadata);
+    let promise1 = metadatas(url);
+    let promise2 = this.getIco(url);
+    let promise3 = this.getImages(url);
+
+    Q.all([promise1, promise2, promise3])
+    .done(function (result) {
+      let metadatas = result[0];
+      metadatas.ico = result[1];
+      metadatas.images = result[2];
+      deferred.resolve(metadatas);
     });
+
     return deferred.promise;
   },
 
@@ -32,6 +41,18 @@ module.exports = {
     return deferred.promise;
   },
 
+  getIco: function(url) {
+    let deferred = Q.defer();
+    this.getContent(url).then(content => {
+      let ico = null,
+        rex = /<link rel="icon"[^>]+href="([^">]+)/;
+
+      ico = content.match(rex);
+      deferred.resolve(ico[1]);
+    });
+    return deferred.promise;
+  },
+
   /**
    * Get all image from url
    * @param  {string} url
@@ -43,8 +64,10 @@ module.exports = {
       let urls = [],
         rex = /<img[^>]+src="([^">]+)/g;
 
-      urls.push(content.match(rex));
-      deferred.resolve(urls[0]);
+      for (var imgs; imgs = rex.exec( content ); ) {
+        urls.push(imgs[1]);
+      }
+      deferred.resolve(urls);
     });
     return deferred.promise;
   },
