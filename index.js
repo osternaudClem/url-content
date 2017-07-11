@@ -15,8 +15,7 @@ module.exports = {
     let promise2 = this.getIco(url);
     let promise3 = this.getImages(url);
 
-    Q.all([promise1, promise2, promise3])
-    .done(function (result) {
+    Q.all([promise1, promise2, promise3]).done(function(result) {
       let metadatas = result[0];
       metadatas.ico = result[1];
       metadatas.images = result[2];
@@ -33,11 +32,14 @@ module.exports = {
    */
   getContent: function(url) {
     let deferred = Q.defer();
-    request({
-      uri: url,
-    }, function(error, response, body) {
-      deferred.resolve(body);
-    });
+    request(
+      {
+        uri: url
+      },
+      function(error, response, body) {
+        deferred.resolve(body);
+      }
+    );
     return deferred.promise;
   },
 
@@ -48,7 +50,7 @@ module.exports = {
         rex = /<link rel="icon"[^>]+href="([^">]+)/;
 
       ico = content.match(rex);
-      deferred.resolve(ico[1]);
+      return deferred.resolve(ico ? ico[1] : null);
     });
     return deferred.promise;
   },
@@ -64,11 +66,11 @@ module.exports = {
       let urls = [],
         rex = /<img[^>]+src="([^">]+)/g;
 
-      for (var imgs; imgs = rex.exec( content ); ) {
+      for (var imgs; (imgs = rex.exec(content)); ) {
         urls.push(imgs[1]);
       }
       deferred.resolve(urls);
     });
     return deferred.promise;
-  },
+  }
 };
