@@ -50,7 +50,7 @@ module.exports = {
       if (err) {
         return deferred.resolve(null);
       }
-      return deferred.resolve(favicon);
+      return deferred.resolve(favicon.url);
     });
     return deferred.promise;
   },
