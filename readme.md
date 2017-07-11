@@ -47,15 +47,3 @@ urlContent.getImages('http://google.com').then(images => {
 
 });
 ```
-
-## Changelogs
-### v0.0.3
-- Add readme
-
-### v0.0.2
-- Add some comments
-
-### v0.0.1
-- Add getMetadatas method
-- Add getContent method
-- Add getImages method
