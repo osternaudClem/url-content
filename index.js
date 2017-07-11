@@ -1,6 +1,7 @@
 'use strict';
 var metadatas = require('html-metadata');
 var request = require('request');
+var findFavicon = require('find-favicon');
 var Q = require('q');
 
 module.exports = {
@@ -45,12 +46,11 @@ module.exports = {
 
   getIco: function(url) {
     let deferred = Q.defer();
-    this.getContent(url).then(content => {
-      let ico = null,
-        rex = /<link rel="icon"[^>]+href="([^">]+)/;
-
-      ico = content.match(rex);
-      return deferred.resolve(ico ? ico[1] : null);
+    findFavicon(url, (err, favicon) => {
+      if (err) {
+        return deferred.resolve(null);
+      }
+      return deferred.resolve(favicon);
     });
     return deferred.promise;
   },

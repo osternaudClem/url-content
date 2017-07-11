@@ -1,12 +1,13 @@
 {
   "name": "url-content",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Get content informations by passing an url.",
   "main": "index.js",
   "keywords": [],
   "author": "Clement Osternaud <osternaud.clement@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "find-favicon": "^0.1.2",
     "html-metadata": "git://github.com/wikimedia/html-metadata.git",
     "q": "^1.4.1",
     "request": "^2.74.0"
