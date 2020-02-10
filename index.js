@@ -2,6 +2,7 @@
 var metadatas = require('html-metadata');
 var request = require('request');
 var findFavicon = require('find-favicon');
+var isUrl = require('is-url');
 var Q = require('q');
 
 module.exports = {
@@ -11,6 +12,14 @@ module.exports = {
    * @return {object}
    */
   getMetadatas: function(url) {
+    if(!isUrl(url)) {
+      return {
+        error: {
+          message: 'the "url" parameter is not a valid url',
+        },
+      };
+    }
+
     let deferred = Q.defer();
     let promise1 = metadatas(url);
     let promise2 = this.getIco(url);

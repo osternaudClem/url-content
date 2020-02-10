@@ -1,6 +1,6 @@
 {
   "name": "url-content",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Get content informations by passing an url.",
   "main": "index.js",
   "keywords": [],
@@ -9,6 +9,7 @@
   "dependencies": {
     "find-favicon": "^0.1.2",
     "html-metadata": "git://github.com/wikimedia/html-metadata.git",
+    "is-url": "^1.2.4",
     "q": "^1.4.1",
     "request": "^2.74.0"
   }
