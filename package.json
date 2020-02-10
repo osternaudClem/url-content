@@ -12,5 +12,8 @@
     "is-url": "^1.2.4",
     "q": "^1.4.1",
     "request": "^2.74.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0"
   }
 }
